@@ -2,7 +2,9 @@ const name1 = process.argv[2];
 const name2 = process.argv[3];
 const name3 = process.argv[4];
 
-let arr = [name1,name2,name3];
+let arr =  process.argv.slice(2);;
+
+
 
 function drawLine(num) {
     let line = '';
