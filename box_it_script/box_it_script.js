@@ -6,6 +6,7 @@ let arr =  process.argv.slice(2);;
 
 
 
+
 function drawLine(num) {
     let line = '';
     for (let i = 0; i < num; i++) {
