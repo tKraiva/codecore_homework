@@ -27,21 +27,26 @@ let loop = function () {
         } else if (answer =='n'){
             rl.question("\n What needs doing? \n > ",(n1)=>{
                 list.push(n1);
+                clist.push('');
                 log("\n ")
                 loop();
             });
           
            
         } else if (answer.charAt(0) == 'c' ) {
-            log("complete works");
-        } else if (answer.charAt(0) == 'd' ) {
+            let task = list[Number(answer.charAt(1))]
+            clist[Number(answer.charAt(1)+answer.charAt(2)+answer.charAt(3))] = '\u2713'; 
+            log(`Completed ${task}`);
 
+        } else if (answer.charAt(0) == 'd' ) {
+            //splice 
         } else if (answer == 'v') {
             log("\n ")
             let count = 0;
             for(let val of list){
+                
+                log(`${count} [ ${clist[count]} ] ${val}`);
                 count++;
-                log(`${count}     ${val}`);
             }
             log("\n ")
         }
