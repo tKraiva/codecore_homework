@@ -8,6 +8,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
+let list = [];
 
 log("Welcome to Todo CLI!");
 
@@ -21,8 +22,11 @@ let loop = function () {
 
         if (answer == 'q') {
             log("See you soon!")
-            return rl.close();
+            return  rl.close();
         } else if (answer =='n'){
+            rl.question("What needs doing? \n >",(n1)=>{
+
+            });
 
         } else if (answer.charAt(0) == 'c' ) {
             log("complete works");
