@@ -20,7 +20,7 @@ log("--------------------------------");
 
 let loop = function () {
     rl.question('(v) View \u25C9 (n) New \u25C9 (cX) Complete \u25C9 (dX) Delete \u25C9 (q) Quit \n >  ', (answer) => {
-
+        //Menu Systemv
         if (answer == 'q') {
             log("See you soon!")
             return rl.close();
@@ -48,6 +48,9 @@ let loop = function () {
         } else if (answer == 'v') {
             log("\n ")
             let count = 0;
+            if(list.toString()==''){
+                log('List is empty...');
+            }
             for (let val of list) {
 
                 log(`${count} [${clist[count]}] ${val}`);
