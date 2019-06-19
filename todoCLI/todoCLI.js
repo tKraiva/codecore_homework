@@ -22,7 +22,7 @@ let loop = function () {
     rl.question('(v) View \u25C9 (n) New \u25C9 (cX) Complete \u25C9 (dX) Delete \u25C9 (q) Quit \n >  ', (answer) => {
         //Menu Systemv
         if (answer == 'q') {
-            log("See you soon!")
+            log("See you soon! 😃")
             return rl.close();
         } else if (answer == 'n') {
             rl.question("\n What needs doing? \n > ", (n1) => {
@@ -41,14 +41,14 @@ let loop = function () {
             log("\n ")
         } else if (answer.charAt(0) == 'd') {
             let task = list[Number(answer.charAt(1) + answer.charAt(2) + answer.charAt(3))]
-            list.splice(Number(answer.charAt(1) + answer.charAt(2) + answer.charAt(3)),1);
+            list.splice(Number(answer.charAt(1) + answer.charAt(2) + answer.charAt(3)), 1);
             log("\n ")
             log(`Deleted "${task}" `);
             log("\n ")
         } else if (answer == 'v') {
             log("\n ")
             let count = 0;
-            if(list.toString()==''){
+            if (list.toString() == '') {
                 log('List is empty...');
             }
             for (let val of list) {
