@@ -1,0 +1,29 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+<p><%= @post.created_at %></p>
+
+
+<%= link_to "Edit", edit_post_path(@post)%>
+<%= link_to "delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
+
+<hr />
+
+<h2>Comments</h2>
+
+<%= form_with(model: @post, local:true) do
+    |f| %>
+    
+
+<div class="form-group">
+
+    <%= f.text_area(
+        :body,
+        cols:50,
+        rows:5,
+        placeholder:"What are your thoughts?",
+        class: "form-control"
+    ) %>
+
+</div>
+    <%= f.submit "Submit" %>
+    <% end %>
