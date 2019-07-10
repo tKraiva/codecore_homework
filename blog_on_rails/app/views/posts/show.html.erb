@@ -10,7 +10,8 @@
 
 <h2>Comments</h2>
 
-<%= form_with(model: @post, local:true) do
+<%= @comment.errors.full_messages.join(', ') %>
+<%= form_for [@post,@comment] do
     |f| %>
     
 
@@ -25,5 +26,21 @@
     ) %>
 
 </div>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Submit"  %>
     <% end %>
+
+
+<hr />
+
+
+    <% @post.comments.each do |ans| %>
+        <%= ans.body %>
+        <br />
+        <small>
+          Commented <%= time_ago_in_words(ans.created_at) %> ago
+        </small>
+        <%= link_to  'Delete', [@post, ans],
+        method: :delete, data: { confirm: 'Are you sure?' } %>
+    
+        <hr>
+      <% end %>
