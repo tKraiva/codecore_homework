@@ -11,9 +11,14 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to 'Home', "/" %>
-        <%= link_to 'New Post', '/posts/new' %>
+      <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand-blue" href="/">
+            Blog on Rails
+          </a>
+            <div class="space">
+            <%= link_to 'Home', "/" %>
+            <%= link_to 'New Post', '/posts/new' %>
+            </div>
       </nav>
     </header>  
   
