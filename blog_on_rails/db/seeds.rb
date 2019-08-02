@@ -9,11 +9,14 @@ Post.delete_all
 Comment.delete_all
 User.delete_all
 
- User.create(
-  first_name: 'Seed',
+PASSWORD = "supersecret"
+
+ super_user = User.create(
+  first_name: 'Admin',
   last_name: 'User',
-  email: 'seed@seed.com',
-  password: 'supersecret'
+  email: 'Admin@seed.com',
+  password: 'supersecret',
+  admin: true
 )
 
  10.times do |num|
@@ -62,3 +65,5 @@ puts "Created #{User.count} users"
 puts "Created #{Post.count} post"
 
 puts "Created #{Comment.count} comments"
+
+puts "Login with #{super_user.email} and password: #{PASSWORD}"
