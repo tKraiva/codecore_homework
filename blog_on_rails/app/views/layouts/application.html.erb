@@ -16,13 +16,25 @@
             Blog on Rails
           </a>
             <div class="space">
-            <%= link_to 'Home', "/" %>
             <%= link_to 'New Post', '/posts/new' %>
-            </div>
+            <% if user_signed_in? %>
+                Hello <%= link_to current_user.full_name, edit_user_path(current_user) %>,
+            <%= link_to "Logout", sessions_path, method: :delete,
+                  data: {confirm: "are you sure you want to log out?"}%>
+            <% else %>
+                <%= link_to "Login", new_sessions_path %> |
+                <%= link_to "Sign Up", new_user_path %>
+            <% end %>
+        </div>
       </nav>
     </header>  
   
         <p></p>
+         <% flash.each do |type, message| %>
+        <div class="flash-message alert alert-<%= type %>">
+          <%= message %>
+        </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

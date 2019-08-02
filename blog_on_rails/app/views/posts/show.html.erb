@@ -1,6 +1,8 @@
 <div class="main-container">
 <h1><%= @post.title %></h1>
 <p><%= @post.body %></p>
+<p>Created by: <%= @post.user&.full_name || 'DELETED'  %></p>
+<br />
 <small>
 Posted <%= time_ago_in_words(@post.created_at) %> ago
 </small>
@@ -8,12 +10,16 @@ Posted <%= time_ago_in_words(@post.created_at) %> ago
 <br />
 <p></p>
 
+<% if can? :crud, @post %>
 <div class="btn btn-outline-primary">
 <%= link_to 'Edit',  edit_post_path(@post)%>
 </div>
+
 <div class="btn btn-outline-primary">
     <%= link_to 'Delete', post_path(@post), method: :delete%>
 </div>
+
+<% end %>
 
 <br />
 
@@ -45,16 +51,28 @@ Posted <%= time_ago_in_words(@post.created_at) %> ago
 
 <hr />
 
-
-    <% @post.comments.each do |ans| %>
+<ul class="review-list">
+    <% @comments.each do |ans| %>
+    <li>
+        <p>
         <%= ans.body %>
         <br />
-        <small>
-          Commented <%= time_ago_in_words(ans.created_at) %> ago
+         <small>
+          Commented by: <%= @post.user&.full_name   %> <%= time_ago_in_words(ans.created_at) %> ago
         </small>
-        <%= link_to  'Delete', [@post, ans],
-        method: :delete, data: { confirm: 'Are you sure?' } %>
-    
-        <hr>
-      <% end %>
-</div>
+        <br />
+         <% if can? :crud, ans %>
+        <small>
+        <%= link_to  'Delete', 
+            post_comment_path(@post, ans), 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </small>
+        
+        <hr />
+        </p>
+    </li>
+    <% end %>
+
+</ul>
